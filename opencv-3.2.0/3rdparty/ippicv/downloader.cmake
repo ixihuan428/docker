@@ -50,21 +50,14 @@ function(_icv_downloader)
 
   set(OPENCV_ICV_PACKAGE_ARCHIVE "${CMAKE_CURRENT_LIST_DIR}/downloads/${OPENCV_ICV_PLATFORM}/${OPENCV_ICV_PACKAGE_NAME}")
   get_filename_component(OPENCV_ICV_PACKAGE_ARCHIVE_DIR "${OPENCV_ICV_PACKAGE_ARCHIVE}" PATH)
-  if(EXISTS "${OPENCV_ICV_PACKAGE_ARCHIVE}")
-    file(MD5 "${OPENCV_ICV_PACKAGE_ARCHIVE}" archive_md5)
-    #if(NOT archive_md5 STREQUAL OPENCV_ICV_PACKAGE_HASH)
-    #  message(WARNING "ICV: Local copy of ICV package has invalid MD5 hash: ${archive_md5} (expected: ${OPENCV_ICV_PACKAGE_HASH})")
-    #  file(REMOVE "${OPENCV_ICV_PACKAGE_ARCHIVE}")
-    #  file(REMOVE_RECURSE "${OPENCV_ICV_PACKAGE_ARCHIVE_DIR}")
-    #endif()
-  endif()
+  
 
 
 
-  ocv_assert(EXISTS "${OPENCV_ICV_PACKAGE_ARCHIVE}")
-  ocv_assert(NOT EXISTS "${OPENCV_ICV_UNPACK_PATH}")
-  file(MAKE_DIRECTORY ${OPENCV_ICV_UNPACK_PATH})
-  ocv_assert(EXISTS "${OPENCV_ICV_UNPACK_PATH}")
+  #ocv_assert(EXISTS "${OPENCV_ICV_PACKAGE_ARCHIVE}")
+  #ocv_assert(NOT EXISTS "${OPENCV_ICV_UNPACK_PATH}")
+  #file(MAKE_DIRECTORY ${OPENCV_ICV_UNPACK_PATH})
+  #ocv_assert(EXISTS "${OPENCV_ICV_UNPACK_PATH}")
 
   message(STATUS "ICV: Unpacking ${OPENCV_ICV_PACKAGE_NAME} to ${OPENCV_ICV_UNPACK_PATH}...")
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xz "${OPENCV_ICV_PACKAGE_ARCHIVE}"
